@@ -1,6 +1,32 @@
 [package]
-name = "blog-rs"
+name = "blog"
 version = "0.1.0"
 edition = "2021"
 
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = "blog"
+path = "src/main.rs"
+
 [dependencies]
+axum = "0.7.6"
+tokio = { version = "1.40.0", features = ["full"] }
+tower = "0.5.1"
+reqwest = "0.12.7"
+serde = { version = "1.0.210", features = ["serde_derive"] }
+config = "0.14.0"
+uuid = { version = "1.10.0", features = ["v4"] }
+chrono = { version = "0.4.38", features = ["clock"] }
+[dependencies.sqlx]
+version = "0.8.2"
+default-features = false
+features = [
+    "runtime-tokio-rustls",
+    "macros",
+    "postgres",
+    "uuid",
+    "chrono",
+    "migrate",
+]
